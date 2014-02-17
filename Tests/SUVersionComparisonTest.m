@@ -16,6 +16,14 @@
 #define SUAssertDescending(a, b) SUAssertOrder(a,b,NSOrderedDescending)
 #define SUAssertEqual(a, b) SUAssertOrder(a,b,NSOrderedSame)
 
+- (void)testBuildVersionsStrings
+{
+	SUAssertAscending(@"1.1.54", @"1.1.56");
+	SUAssertEqual(@"1.1.1", @"1.1.1");
+	SUAssertDescending(@"2.0", @"1.1");
+}
+
+/*
 - (void)testNumbers
 {
 	SUAssertAscending(@"1.0", @"1.1");
@@ -63,5 +71,6 @@
 {
     SUAssertAscending(@"201210251627", @"201211051041");
 }
+*/
 
 @end

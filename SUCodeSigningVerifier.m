@@ -49,14 +49,25 @@ extern OSStatus SecStaticCodeCheckValidityWithErrors(SecStaticCodeRef staticCode
         result = -1;
         goto finally;
     }
+    else
+    {
+        NSString *versionString = [NSString stringWithFormat:@"version: %@",
+                                   [newBundle objectForInfoDictionaryKey:@"CFBundleVersion"]];
+        SULog(@"Bundle version to load for update: @%",versionString);
+    }
     
     result = SecStaticCodeCreateWithPath((CFURLRef)[newBundle executableURL], kSecCSDefaultFlags, &staticCode);
-    if (result != 0) {
+
+    if (result != 0)
+    {
         SULog(@"Failed to get static code %d", result);
         goto finally;
     }
     
-    result = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSDefaultFlags | kSecCSCheckAllArchitectures, requirement, (CFErrorRef *)error);
+    result = SecStaticCodeCheckValidityWithErrors(staticCode,
+                                                  kSecCSDefaultFlags | kSecCSCheckAllArchitectures,
+                                                  requirement,
+                                                  (CFErrorRef *)error);
     if (result != 0 && error) [*error autorelease];
     
 finally:

@@ -27,5 +27,6 @@
 
 void	SUClearLog( void );
 void	SULog( NSString* format, ... );
-
+BOOL    SUIsDebug();
+void    SUSetDebug(BOOL setDebugFlag);
 

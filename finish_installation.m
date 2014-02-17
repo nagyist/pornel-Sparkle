@@ -140,6 +140,13 @@
 	NSBundle			*theBundle = [NSBundle bundleWithPath: [[NSFileManager defaultManager] stringWithFileSystemRepresentation: hostpath length:strlen(hostpath)]];
 	host = [[SUHost alloc] initWithBundle: theBundle];
     installationPath = [[host installationPath] copy];
+    
+    if (theBundle != nil)
+    {
+        NSString *versionString = [NSString stringWithFormat:@"version: %@",
+                                   [theBundle objectForInfoDictionaryKey:@"CFBundleVersion"]];
+        SULog(@"Bundle version to load for update: @%",versionString);
+    }
 	
     if (shouldShowUI) {
         SUStatusController*	statusCtl = [[SUStatusController alloc] initWithHost: host];	// We quit anyway after we've installed, so leak this for now.

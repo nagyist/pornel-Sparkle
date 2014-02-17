@@ -20,6 +20,34 @@
 
 #define LOG_FILE_PATH	@"~/Library/Logs/SparkleUpdateLog.log"
 
+BOOL debugFlag;
+
+// -----------------------------------------------------------------------------
+//	SUIsDebug:
+//		Retrieves, whether debug flag was set or not.
+//
+//	GIVES:
+//		result	-	debug flag, if set.
+// -----------------------------------------------------------------------------
+
+BOOL	SUIsDebug( void )
+{
+    return debugFlag;
+}
+
+// -----------------------------------------------------------------------------
+//	SUSetDebug:
+//		Sets the debug flag inside the logging.
+//
+//	TAKES:
+//		setToDebug	-	debug flag to set.
+// -----------------------------------------------------------------------------
+
+void	SUDSetDebug( BOOL setToDebug )
+{
+    debugFlag = setToDebug;
+}
+
 
 // -----------------------------------------------------------------------------
 //	SUClearLog:
@@ -66,6 +94,11 @@ void	SULog( NSString* format, ... )
 		NSLog( @"%@",theStr );
 	else
 	{
+        if(debugFlag)
+        {
+           NSLog(@"Sparkle DEBUG: %@", theStr);
+        }
+
 		theStr = [NSString stringWithFormat: @"%@: %@", [NSDate date], theStr];
 		NSData*		theData = [theStr dataUsingEncoding: NSUTF8StringEncoding];
 		char		newlineChar = '\n';
@@ -74,6 +107,7 @@ void	SULog( NSString* format, ... )
 		fclose( logfile );
 		logfile = NULL;
 	}
+
 	va_end(ap);
 }
 
