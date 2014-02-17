@@ -136,6 +136,10 @@
 		93FB277A156BD80D001937C7 /* SUPasswordPrompt.h in Headers */ = {isa = PBXBuildFile; fileRef = 93FB2778156BD80D001937C7 /* SUPasswordPrompt.h */; };
 		93FB277B156BD80D001937C7 /* SUPasswordPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB2779156BD80D001937C7 /* SUPasswordPrompt.m */; };
 		93FB277F156BD826001937C7 /* SUPasswordPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FB277D156BD826001937C7 /* SUPasswordPrompt.xib */; };
+		961F639D18B2B914005A2994 /* NSData+AESCrypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 961F639B18B2B914005A2994 /* NSData+AESCrypt.h */; };
+		961F639E18B2B914005A2994 /* NSData+AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 961F639C18B2B914005A2994 /* NSData+AESCrypt.m */; };
+		961F63A018B2B9BB005A2994 /* AESCryptTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 961F639F18B2B9BB005A2994 /* AESCryptTest.m */; };
+		961F63A218B2C305005A2994 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961F63A118B2C305005A2994 /* Cocoa.framework */; };
 		C129B75A18B202C8006DC999 /* SUVersionComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = C129B75918B202C8006DC999 /* SUVersionComparator.m */; };
 		C159F02818B273950095109A /* SURSAVerifier.h in Headers */ = {isa = PBXBuildFile; fileRef = C159F02618B273950095109A /* SURSAVerifier.h */; };
 		C159F02918B273950095109A /* SURSAVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C159F02718B273950095109A /* SURSAVerifier.m */; };
@@ -408,6 +412,12 @@
 		93FB2778156BD80D001937C7 /* SUPasswordPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUPasswordPrompt.h; sourceTree = "<group>"; };
 		93FB2779156BD80D001937C7 /* SUPasswordPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUPasswordPrompt.m; sourceTree = "<group>"; };
 		93FB277E156BD826001937C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SUPasswordPrompt.xib; sourceTree = "<group>"; };
+		961F639A18B2AD2D005A2994 /* SURSAVerifierTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SURSAVerifierTest.h; sourceTree = "<group>"; };
+		961F639B18B2B914005A2994 /* NSData+AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AESCrypt.h"; sourceTree = "<group>"; };
+		961F639C18B2B914005A2994 /* NSData+AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AESCrypt.m"; sourceTree = "<group>"; };
+		961F639F18B2B9BB005A2994 /* AESCryptTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCryptTest.m; sourceTree = "<group>"; };
+		961F63A118B2C305005A2994 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		961F63A318B2C3F7005A2994 /* InterfaceBuilderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InterfaceBuilderKit.framework; path = Library/Frameworks/InterfaceBuilderKit.framework; sourceTree = DEVELOPER_DIR; };
 		C129B75818B202BD006DC999 /* SUVersionComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUVersionComparator.h; sourceTree = "<group>"; };
 		C129B75918B202C8006DC999 /* SUVersionComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUVersionComparator.m; sourceTree = "<group>"; };
 		C1502E69189FE5E500916DE8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -461,6 +471,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961F63A218B2C305005A2994 /* Cocoa.framework in Frameworks */,
 				61FA52880E2D9EA400EF58AD /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +538,8 @@
 		0867D69AFE84028FC02AAC07 /* Apple Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				961F63A318B2C3F7005A2994 /* InterfaceBuilderKit.framework */,
+				961F63A118B2C305005A2994 /* Cocoa.framework */,
 				6117796E0D1112E000749C97 /* IOKit.framework */,
 				61B5FC3F09C4FD4000B25A18 /* WebKit.framework */,
 				61B5F8F609C4CEB300B25A18 /* Security.framework */,
@@ -611,6 +624,8 @@
 				61227A150DB548B800AB99EA /* SUVersionComparisonTest.m */,
 				612279DA0DB5470200AB99EA /* Sparkle Unit Tests-Info.plist */,
 				C159F02C18B274CD0095109A /* SURSAVerifierTest.m */,
+				961F639A18B2AD2D005A2994 /* SURSAVerifierTest.h */,
+				961F639F18B2B9BB005A2994 /* AESCryptTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -706,6 +721,8 @@
 				61B078CD15A5FB6100600039 /* SUCodeSigningVerifier.m */,
 				C159F02618B273950095109A /* SURSAVerifier.h */,
 				C159F02718B273950095109A /* SURSAVerifier.m */,
+				961F639B18B2B914005A2994 /* NSData+AESCrypt.h */,
+				961F639C18B2B914005A2994 /* NSData+AESCrypt.m */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -775,6 +792,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961F639D18B2B914005A2994 /* NSData+AESCrypt.h in Headers */,
 				61B5F8ED09C4CE3C00B25A18 /* SUUpdater.h in Headers */,
 				3772FEA913DE0B6B00F79537 /* SUVersionDisplayProtocol.h in Headers */,
 				61B5FC0D09C4FC8200B25A18 /* SUAppcast.h in Headers */,
@@ -1148,6 +1166,7 @@
 			files = (
 				C159F02D18B274CD0095109A /* SURSAVerifierTest.m in Sources */,
 				61227A160DB548B800AB99EA /* SUVersionComparisonTest.m in Sources */,
+				961F63A018B2B9BB005A2994 /* AESCryptTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1194,6 +1213,7 @@
 				6102FE5C0E08C7EC00F85D09 /* SUUnarchiver_Private.m in Sources */,
 				61D85D6D0E10B2ED00F9B4A9 /* SUPipedUnarchiver.m in Sources */,
 				61EF67560E25B58D00F754E0 /* SUHost.m in Sources */,
+				961F639E18B2B914005A2994 /* NSData+AESCrypt.m in Sources */,
 				5D06E8EB0FD68CE4005AE3F6 /* bspatch.c in Sources */,
 				5D06E8EC0FD68CE4005AE3F6 /* SUBinaryDeltaApply.m in Sources */,
 				5D06E8ED0FD68CE4005AE3F6 /* SUBinaryDeltaCommon.m in Sources */,
@@ -1419,6 +1439,7 @@
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1429,6 +1450,7 @@
 				CODE_SIGN_IDENTITY = "Canon Europa N.V.";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -1498,6 +1520,17 @@
 			baseConfigurationReference = FA3AAF3A1050B273004B3130 /* ConfigUnitTestDebug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+					"-ObjC",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1508,6 +1541,17 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Canon Europa N.V.";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+					"-ObjC",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;

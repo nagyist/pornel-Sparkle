@@ -12,19 +12,19 @@
 #import <Security/Security.h>
 #import "SURSAVerifier.h"
 
-const size_t BUFFER_SIZE = 64;
-const size_t CIPHER_BUFFER_SIZE = 1024;
-const uint32_t PADDING = kSecPaddingNone;
+const size_t SURSA_BUFFER_SIZE = 64;
+const size_t SURSA_CIPHER_BUFFER_SIZE = 1024;
+const uint32_t SURSA_PADDING = kSecPaddingNone;
 
 /* Constants used by SecKeyGeneratePair() - in SecKey.h.  Never used in any SecItem apis directly. */
 // SEC_CONST_DECL (kSecPrivateKeyAttrs, "private");
 // SEC_CONST_DECL (kSecPublicKeyAttrs, "public");
 
-static const char kSecPublicKeyAttrs[] = "public";
-static const char kSecPrivateKeyAttrs[] = "private";
+const char SURSA_kSecPublicKeyAttrs[] = "public";
+const char SURSA_kSecPrivateKeyAttrs[] = "private";
 
-static const UInt8 publicKeyIdentifier[] = "com.apple.sample.publickey";
-static const UInt8 privateKeyIdentifier[] = "com.apple.sample.privatekey";
+const UInt8 SURSA_publicKeyIdentifier[] = "com.apple.sample.publickey";
+const UInt8 SURSA_privateKeyIdentifier[] = "com.apple.sample.privatekey";
 
 @implementation SURSAVerifier
 
@@ -37,9 +37,11 @@ static const UInt8 privateKeyIdentifier[] = "com.apple.sample.privatekey";
     
     if(self) {
         
-        privateTag = [[NSData alloc] initWithBytes:privateKeyIdentifier length:sizeof(privateKeyIdentifier)];
-        publicTag = [[NSData alloc] initWithBytes:publicKeyIdentifier length:sizeof(publicKeyIdentifier)];
-        [self testAsymmetricEncryptionAndDecryption];
+        privateTag = [[NSData alloc] initWithBytes:SURSA_privateKeyIdentifier
+                                            length:sizeof(SURSA_privateKeyIdentifier)];
+        publicTag = [[NSData alloc] initWithBytes:SURSA_publicKeyIdentifier
+                                           length:sizeof(SURSA_publicKeyIdentifier)];
+        // [self testAsymmetricEncryptionAndDecryption];
     }
     
     return self;
@@ -76,44 +78,10 @@ static const UInt8 privateKeyIdentifier[] = "com.apple.sample.privatekey";
     return publicKeyReference;
 }
 
-- (void)testAsymmetricEncryptionAndDecryption {
-    
-    uint8_t *plainBuffer;
-    uint8_t *cipherBuffer;
-    uint8_t *decryptedBuffer;
-    
-    
-    
-    const char inputString[] = "This is a test demo for RSA Implementation in Objective C";
-    int len = strlen(inputString);
-    // TODO: this is a hack since i know inputString length will be less than BUFFER_SIZE
-    if (len > BUFFER_SIZE) len = BUFFER_SIZE-1;
-    
-    plainBuffer = (uint8_t *)calloc(BUFFER_SIZE, sizeof(uint8_t));
-    cipherBuffer = (uint8_t *)calloc(CIPHER_BUFFER_SIZE, sizeof(uint8_t));
-    decryptedBuffer = (uint8_t *)calloc(BUFFER_SIZE, sizeof(uint8_t));
-    
-    strncpy( (char *)plainBuffer, inputString, len);
-    
-    NSLog(@"init() plainBuffer: %s", plainBuffer);
-    //NSLog(@"init(): sizeof(plainBuffer): %d", sizeof(plainBuffer));
-    [self encryptWithPublicKey:(UInt8 *)plainBuffer cipherBuffer:cipherBuffer];
-    NSLog(@"encrypted data: %s", cipherBuffer);
-    //NSLog(@"init(): sizeof(cipherBuffer): %d", sizeof(cipherBuffer));
-    [self decryptWithPrivateKey:cipherBuffer plainBuffer:decryptedBuffer];
-    NSLog(@"decrypted data: %s", decryptedBuffer);
-    //NSLog(@"init(): sizeof(decryptedBuffer): %d", sizeof(decryptedBuffer));
-    NSLog(@"====== /second test =======================================");
-    
-    free(plainBuffer);
-    free(cipherBuffer);
-    free(decryptedBuffer);
-}
-
 /* Borrowed from:
  * https://developer.apple.com/library/mac/#documentation/security/conceptual/CertKeyTrustProgGuide/iPhone_Tasks/iPhone_Tasks.html
  */
-- (void)encryptWithPublicKey:(uint8_t *)plainBuffer cipherBuffer:(uint8_t *)cipherBuffer
+- (uint8_t *)encryptWithPublicKey:(uint8_t *)plainBuffer
 {
     
     NSLog(@"== encryptWithPublicKey()");
@@ -123,13 +91,15 @@ static const UInt8 privateKeyIdentifier[] = "com.apple.sample.privatekey";
     NSLog(@"** original plain text 0: %s", plainBuffer);
     
     size_t plainBufferSize = strlen((char *)plainBuffer);
-    size_t cipherBufferSize = CIPHER_BUFFER_SIZE;
+    size_t cipherBufferSize = SURSA_CIPHER_BUFFER_SIZE;
+    
+    uint8_t * cipherBuffer = (uint8_t *)calloc(SURSA_CIPHER_BUFFER_SIZE, sizeof(uint8_t));
     
     NSLog(@"SecKeyGetBlockSize() public = %lu", SecKeyGetBlockSize([self getPublicKeyRef]));
     //  Error handling
     // Encrypt using the public.
     status = SecKeyEncrypt([self getPublicKeyRef],
-                           PADDING,
+                           SURSA_PADDING,
                            plainBuffer,
                            plainBufferSize,
                            &cipherBuffer[0],
@@ -137,23 +107,26 @@ static const UInt8 privateKeyIdentifier[] = "com.apple.sample.privatekey";
                            );
     NSLog(@"encryption result code: %ld (size: %lu)", status, cipherBufferSize);
     NSLog(@"encrypted text: %s", cipherBuffer);
+    
+    return cipherBuffer;
 }
 
-- (void)decryptWithPrivateKey:(uint8_t *)cipherBuffer plainBuffer:(uint8_t *)plainBuffer
+- (uint8_t *)decryptWithPrivateKey:(uint8_t *)cipherBuffer
 {
     OSStatus status = noErr;
     
     size_t cipherBufferSize = strlen((char *)cipherBuffer);
     
-    NSLog(@"decryptWithPrivateKey: length of buffer: %lu", BUFFER_SIZE);
+    NSLog(@"decryptWithPrivateKey: length of buffer: %lu", SURSA_BUFFER_SIZE);
     NSLog(@"decryptWithPrivateKey: length of input: %lu", cipherBufferSize);
     
     // DECRYPTION
-    size_t plainBufferSize = BUFFER_SIZE;
+    size_t plainBufferSize = SURSA_BUFFER_SIZE;
     
+    uint8_t * plainBuffer = (uint8_t *)calloc(SURSA_BUFFER_SIZE, sizeof(uint8_t));
     //  Error handling
     status = SecKeyDecrypt([self getPrivateKeyRef],
-                           PADDING,
+                           SURSA_PADDING,
                            &cipherBuffer[0],
                            cipherBufferSize,
                            &plainBuffer[0],
@@ -162,6 +135,8 @@ static const UInt8 privateKeyIdentifier[] = "com.apple.sample.privatekey";
     NSLog(@"decryption result code: %ld (size: %lu)", status, plainBufferSize);
     NSLog(@"FINAL decrypted text: %s", plainBuffer);
     
+    
+    return plainBuffer;
 }
 
 
@@ -241,8 +216,8 @@ static const UInt8 privateKeyIdentifier[] = "com.apple.sample.privatekey";
     // See SecKey.h to set other flag values.
     
     // Set attributes to top level dictionary.
-    [keyPairAttr setObject:privateKeyAttr forKey:(__bridge id)kSecPrivateKeyAttrs];
-    [keyPairAttr setObject:publicKeyAttr forKey:(__bridge id)kSecPublicKeyAttrs];
+    [keyPairAttr setObject:privateKeyAttr forKey:(__bridge id)SURSA_kSecPrivateKeyAttrs];
+    [keyPairAttr setObject:publicKeyAttr forKey:(__bridge id)SURSA_kSecPublicKeyAttrs];
     
     // SecKeyGeneratePair returns the SecKeyRefs just for educational purposes.
     sanityCheck = SecKeyGeneratePair((__bridge CFDictionaryRef)keyPairAttr, &publicKey, &privateKey);
