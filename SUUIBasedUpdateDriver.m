@@ -60,7 +60,9 @@
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
 {
 	[[updateAlert window] makeKeyAndOrderFront:self];
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"NSApplicationDidBecomeActiveNotification" object:NSApp];
+	[[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"NSApplicationDidBecomeActiveNotification"
+                                                  object:NSApp];
 }
 
 - (void)updateAlert:(SUUpdateAlert *)alert finishedWithChoice:(SUUpdateAlertChoice)choice
@@ -199,6 +201,7 @@
 - (void)abortUpdateWithError:(NSError *)error
 {
 	NSAlert *alert = [NSAlert alertWithMessageText:SULocalizedString(@"Update Error!", nil) defaultButton:SULocalizedString(@"Cancel Update", nil) alternateButton:nil otherButton:nil informativeTextWithFormat: @"%@", [error localizedDescription]];
+    
 	[self showModalAlert:alert];
 	[super abortUpdateWithError:error];
 }

@@ -136,6 +136,10 @@
 		93FB277A156BD80D001937C7 /* SUPasswordPrompt.h in Headers */ = {isa = PBXBuildFile; fileRef = 93FB2778156BD80D001937C7 /* SUPasswordPrompt.h */; };
 		93FB277B156BD80D001937C7 /* SUPasswordPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FB2779156BD80D001937C7 /* SUPasswordPrompt.m */; };
 		93FB277F156BD826001937C7 /* SUPasswordPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FB277D156BD826001937C7 /* SUPasswordPrompt.xib */; };
+		C129B75A18B202C8006DC999 /* SUVersionComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = C129B75918B202C8006DC999 /* SUVersionComparator.m */; };
+		C159F02818B273950095109A /* SURSAVerifier.h in Headers */ = {isa = PBXBuildFile; fileRef = C159F02618B273950095109A /* SURSAVerifier.h */; };
+		C159F02918B273950095109A /* SURSAVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C159F02718B273950095109A /* SURSAVerifier.m */; };
+		C159F02D18B274CD0095109A /* SURSAVerifierTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C159F02C18B274CD0095109A /* SURSAVerifierTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -404,8 +408,13 @@
 		93FB2778156BD80D001937C7 /* SUPasswordPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUPasswordPrompt.h; sourceTree = "<group>"; };
 		93FB2779156BD80D001937C7 /* SUPasswordPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUPasswordPrompt.m; sourceTree = "<group>"; };
 		93FB277E156BD826001937C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SUPasswordPrompt.xib; sourceTree = "<group>"; };
+		C129B75818B202BD006DC999 /* SUVersionComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUVersionComparator.h; sourceTree = "<group>"; };
+		C129B75918B202C8006DC999 /* SUVersionComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUVersionComparator.m; sourceTree = "<group>"; };
 		C1502E69189FE5E500916DE8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C1502E6A189FE60300916DE8 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C159F02618B273950095109A /* SURSAVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SURSAVerifier.h; sourceTree = "<group>"; };
+		C159F02718B273950095109A /* SURSAVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SURSAVerifier.m; sourceTree = "<group>"; };
+		C159F02C18B274CD0095109A /* SURSAVerifierTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SURSAVerifierTest.m; sourceTree = "<group>"; };
 		FA1941CA0D94A70100DD942E /* ConfigFrameworkDebug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ConfigFrameworkDebug.xcconfig; sourceTree = "<group>"; };
 		FA1941CB0D94A70100DD942E /* ConfigTestAppDebug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ConfigTestAppDebug.xcconfig; sourceTree = "<group>"; };
 		FA1941CC0D94A70100DD942E /* ConfigCommonRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ConfigCommonRelease.xcconfig; sourceTree = "<group>"; };
@@ -601,6 +610,7 @@
 				61227A140DB548B800AB99EA /* SUVersionComparisonTest.h */,
 				61227A150DB548B800AB99EA /* SUVersionComparisonTest.m */,
 				612279DA0DB5470200AB99EA /* Sparkle Unit Tests-Info.plist */,
+				C159F02C18B274CD0095109A /* SURSAVerifierTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -618,6 +628,8 @@
 				3772FEA813DE0B6B00F79537 /* SUVersionDisplayProtocol.h */,
 				61A225A20D1C4AC000430CCD /* SUStandardVersionComparator.h */,
 				61A225A30D1C4AC000430CCD /* SUStandardVersionComparator.m */,
+				C129B75818B202BD006DC999 /* SUVersionComparator.h */,
+				C129B75918B202C8006DC999 /* SUVersionComparator.m */,
 			);
 			name = "Appcast Support";
 			sourceTree = "<group>";
@@ -692,6 +704,8 @@
 				61299A2E09CA2DAB00B7442F /* SUDSAVerifier.m */,
 				61B078CC15A5FB6100600039 /* SUCodeSigningVerifier.h */,
 				61B078CD15A5FB6100600039 /* SUCodeSigningVerifier.m */,
+				C159F02618B273950095109A /* SURSAVerifier.h */,
+				C159F02718B273950095109A /* SURSAVerifier.m */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -784,6 +798,7 @@
 				618FA5220DAE8E8A0026945C /* SUPackageInstaller.h in Headers */,
 				61F83F740DBFE141006FDD30 /* SUBasicUpdateDriver.h in Headers */,
 				61B93A3C0DD02D7000DCD2F8 /* SUUIBasedUpdateDriver.h in Headers */,
+				C159F02818B273950095109A /* SURSAVerifier.h in Headers */,
 				61B93B270DD0FDD300DCD2F8 /* SUAutomaticUpdateDriver.h in Headers */,
 				61B93C090DD112FF00DCD2F8 /* SUScheduledUpdateDriver.h in Headers */,
 				610134730DD250470049ACDF /* SUUpdateDriver.h in Headers */,
@@ -1131,6 +1146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C159F02D18B274CD0095109A /* SURSAVerifierTest.m in Sources */,
 				61227A160DB548B800AB99EA /* SUVersionComparisonTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1163,12 +1179,14 @@
 				612DCBB00D488BC60015DBEA /* SUUpdatePermissionPrompt.m in Sources */,
 				61180BCB0D64138900B4E0D1 /* SUWindowController.m in Sources */,
 				618FA5020DAE88B40026945C /* SUInstaller.m in Sources */,
+				C159F02918B273950095109A /* SURSAVerifier.m in Sources */,
 				618FA5060DAE8AB80026945C /* SUPlainInstaller.m in Sources */,
 				618FA5230DAE8E8A0026945C /* SUPackageInstaller.m in Sources */,
 				61F83F720DBFE140006FDD30 /* SUBasicUpdateDriver.m in Sources */,
 				61B93A3D0DD02D7000DCD2F8 /* SUUIBasedUpdateDriver.m in Sources */,
 				61B93B280DD0FDD300DCD2F8 /* SUAutomaticUpdateDriver.m in Sources */,
 				61B93C0A0DD112FF00DCD2F8 /* SUScheduledUpdateDriver.m in Sources */,
+				C129B75A18B202C8006DC999 /* SUVersionComparator.m in Sources */,
 				610134740DD250470049ACDF /* SUUpdateDriver.m in Sources */,
 				6101347C0DD2541A0049ACDF /* SUProbingUpdateDriver.m in Sources */,
 				61A354560DF113C70076ECB1 /* SUUserInitiatedUpdateDriver.m in Sources */,
@@ -1380,6 +1398,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA1941CA0D94A70100DD942E /* ConfigFrameworkDebug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1388,6 +1408,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA1941D50D94A70100DD942E /* ConfigFrameworkRelease.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "Canon Europa N.V.";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1404,6 +1426,7 @@
 		1DEB91B308733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Canon Europa N.V.";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
@@ -1436,6 +1459,7 @@
 			baseConfigurationReference = FA1941D40D94A70100DD942E /* ConfigRelaunchRelease.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "Canon Europa N.V.";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1464,6 +1488,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5D06E8F30FD68D21005AE3F6 /* ConfigBinaryDeltaRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Canon Europa N.V.";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -1481,6 +1506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA3AAF391050B273004B3130 /* ConfigUnitTestRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Canon Europa N.V.";
 				COMBINE_HIDPI_IMAGES = YES;
 				SDKROOT = macosx;
 			};
@@ -1490,7 +1516,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA1941CB0D94A70100DD942E /* ConfigTestAppDebug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
 			};
 			name = Debug;
 		};
@@ -1498,7 +1525,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA1941D20D94A70100DD942E /* ConfigTestAppRelease.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "Canon Europa N.V.";
 			};
 			name = Release;
 		};

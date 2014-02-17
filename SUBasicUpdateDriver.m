@@ -231,6 +231,7 @@
         }
     }
     
+    // TODO: nagyist: make RSAVerifier work with Sparkle
     return [SUDSAVerifier validatePath:downloadedPath withEncodedDSASignature:DSASignature withPublicDSAKey:publicDSAKey];
 }
 
