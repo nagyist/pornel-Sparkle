@@ -20,8 +20,9 @@ const uint32_t SURSA_PADDING = kSecPaddingNone;
 // SEC_CONST_DECL (kSecPrivateKeyAttrs, "private");
 // SEC_CONST_DECL (kSecPublicKeyAttrs, "public");
 
-const char SURSA_kSecPublicKeyAttrs[] = "public";
+const char SURSA_kSecPublicKeyAttrs[] =  "public";
 const char SURSA_kSecPrivateKeyAttrs[] = "private";
+
 
 const UInt8 SURSA_publicKeyIdentifier[] = "com.apple.sample.publickey";
 const UInt8 SURSA_privateKeyIdentifier[] = "com.apple.sample.privatekey";
@@ -41,6 +42,7 @@ const UInt8 SURSA_privateKeyIdentifier[] = "com.apple.sample.privatekey";
                                             length:sizeof(SURSA_privateKeyIdentifier)];
         publicTag = [[NSData alloc] initWithBytes:SURSA_publicKeyIdentifier
                                            length:sizeof(SURSA_publicKeyIdentifier)];
+
         // [self testAsymmetricEncryptionAndDecryption];
     }
     
@@ -203,7 +205,7 @@ const UInt8 SURSA_privateKeyIdentifier[] = "com.apple.sample.privatekey";
     
     // Set top level dictionary for the keypair.
     [keyPairAttr setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
-    [keyPairAttr setObject:[NSNumber numberWithUnsignedInteger:keySize] forKey:(__bridge id)kSecAttrKeySizeInBits];
+    [keyPairAttr setObject:[NSNumber numberWithInteger:keySize] forKey:(__bridge id)kSecAttrKeySizeInBits];
     
     // Set the private key dictionary.
     [privateKeyAttr setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecAttrIsPermanent];
@@ -216,8 +218,15 @@ const UInt8 SURSA_privateKeyIdentifier[] = "com.apple.sample.privatekey";
     // See SecKey.h to set other flag values.
     
     // Set attributes to top level dictionary.
+    
+    //For testing the sursa_ksec values
+    NSLog(@"array: %@", [keyPairAttr allKeys]);
+    NSLog(@"SURSA_kSecPrivateKeyAttrs: %@", (__bridge id)SURSA_kSecPrivateKeyAttrs);
+    NSLog(@"SURSA_kSecPrivateKeyAttrs: %@",(__bridge id)SURSA_kSecPublicKeyAttrs);
+    
     [keyPairAttr setObject:privateKeyAttr forKey:(__bridge id)SURSA_kSecPrivateKeyAttrs];
-    [keyPairAttr setObject:publicKeyAttr forKey:(__bridge id)SURSA_kSecPublicKeyAttrs];
+    [keyPairAttr setObject:publicKeyAttr forKey:SURSA_kSecPublicKeyAttrs];
+    
     
     // SecKeyGeneratePair returns the SecKeyRefs just for educational purposes.
     sanityCheck = SecKeyGeneratePair((__bridge CFDictionaryRef)keyPairAttr, &publicKey, &privateKey);

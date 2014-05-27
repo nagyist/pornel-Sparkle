@@ -33,8 +33,8 @@ const char inputString[] = "This is a test demo for RSA Implementation in Object
 }
 */
 
+
 - (void)testAsymmetricEncryptionAndDecryption {
-    
     uint8_t *plainBuffer;
     uint8_t *cipherBuffer;
     uint8_t *decryptedBuffer;
@@ -45,7 +45,7 @@ const char inputString[] = "This is a test demo for RSA Implementation in Object
     // TODO: this is a hack since i know inputString length will be less than BUFFER_SIZE
     if (len > (long)SURSA_BUFFER_SIZE)
     {
-        len = (long)SURSA_BUFFER_SIZE-1;
+        len = (long)SURSA_BUFFER_SIZE+1;
     }
     
     plainBuffer = (uint8_t *)calloc(SURSA_BUFFER_SIZE, sizeof(uint8_t));
@@ -59,7 +59,7 @@ const char inputString[] = "This is a test demo for RSA Implementation in Object
     cipherBuffer = [ownSURSAVerifier encryptWithPublicKey:plainBuffer];
     NSLog(@"encrypted data: %s", cipherBuffer);
     //NSLog(@"init(): sizeof(cipherBuffer): %d", sizeof(cipherBuffer));
-    plainBuffer = [ownSURSAVerifier decryptWithPrivateKey:(UInt8 *)cipherBuffer];
+    decryptedBuffer = [ownSURSAVerifier decryptWithPrivateKey:(UInt8 *)cipherBuffer];
     NSLog(@"decrypted data: %s", decryptedBuffer);
     //NSLog(@"init(): sizeof(decryptedBuffer): %d", sizeof(decryptedBuffer));
     NSLog(@"====== /second test =======================================");
