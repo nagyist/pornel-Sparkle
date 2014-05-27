@@ -1,18 +1,18 @@
-/* NSButton (Automatically download and install updates in the future) : <title:Automatically download and install updates in the future> (oid:92) */
-"Automatically download and install updates in the future" = "Automatically download and install updates in the future";
 
-/* NSButton (Install Update) : <title:Install Update> (oid:76) */
-"Install Update" = "Install Update";
+/* Class = "NSWindow"; title = "Software Update"; ObjectID = "5"; */
+"Software Update" = "Mise à jour logiciel";
 
-/* NSTextField (Release Notes:) : <title:Release Notes:> (oid:17) */
-"Release Notes:" = "Release Notes:";
+/* Class = "NSTextFieldCell"; title = "Release Notes:"; ObjectID = "170"; */
+"Release Notes:" = "Notes de version :";
 
-/* NSButton (Remind Me Later) : <title:Remind Me Later> (oid:22) */
-"Remind Me Later" = "Remind Me Later";
+/* Class = "NSButtonCell"; title = "Remind Me Later"; ObjectID = "171"; */
+"Remind Me Later" = "Pas maintenant";
 
-/* NSButton (Skip This Version) : <title:Skip This Version> (oid:23) */
-"Skip This Version" = "Skip This Version";
+/* Class = "NSButtonCell"; title = "Skip This Version"; ObjectID = "172"; */
+"Skip This Version" = "Ignorer cette version";
 
-/* NSWindow (Software Update) : <title:Software Update> (oid:5) */
-"Software Update" = "Software Update";
+/* Class = "NSButtonCell"; title = "Install Update"; ObjectID = "173"; */
+"Install Update" = "Installer";
 
+/* Class = "NSButtonCell"; title = "Automatically download and install updates in the future"; ObjectID = "175"; */
+"Automatically download and install updates in the future" = "Automatiquement télécharger et installer les mises à jour à l’avenir";
