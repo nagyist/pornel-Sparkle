@@ -45,6 +45,15 @@
 	[super dealloc];
 }
 
+- (BOOL)isDebug
+{
+#ifdef DEBUG
+    return TRUE;
+#else
+    return SUIsDebug();
+#endif
+}
+
 - (NSString *)description { return [NSString stringWithFormat:@"%@ <%@, %@>", [self class], [self bundlePath], [self installationPath]]; }
 
 - (NSString *)bundlePath

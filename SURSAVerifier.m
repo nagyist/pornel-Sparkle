@@ -24,8 +24,8 @@ const char SURSA_kSecPublicKeyAttrs[] =  "public";
 const char SURSA_kSecPrivateKeyAttrs[] = "private";
 
 
-const UInt8 SURSA_publicKeyIdentifier[] = "com.apple.sample.publickey";
-const UInt8 SURSA_privateKeyIdentifier[] = "com.apple.sample.privatekey";
+const UInt8 SURSA_publicKeyIdentifier[] = "org.b2b4u.sparkle.publickey";
+const UInt8 SURSA_privateKeyIdentifier[] = "org.b2b4u.sparkle.privatekey";
 
 @implementation SURSAVerifier
 
@@ -107,7 +107,7 @@ const UInt8 SURSA_privateKeyIdentifier[] = "com.apple.sample.privatekey";
                            &cipherBuffer[0],
                            &cipherBufferSize
                            );
-    NSLog(@"encryption result code: %ld (size: %lu)", status, cipherBufferSize);
+    NSLog(@"encryption result code: %id (size: %lu)", (int)status, cipherBufferSize);
     NSLog(@"encrypted text: %s", cipherBuffer);
     
     return cipherBuffer;

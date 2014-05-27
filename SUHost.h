@@ -31,6 +31,7 @@
 - (NSImage *)icon;
 - (BOOL)isRunningOnReadOnlyVolume;
 - (BOOL)isBackgroundApplication;
+- (BOOL)isDebug;
 - (NSString *)publicDSAKey;
 - (NSArray *)systemProfile;
 

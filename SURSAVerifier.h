@@ -11,7 +11,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
-
+#import <Security/Security.h>
 
 extern const size_t SURSA_BUFFER_SIZE;
 extern const size_t SURSA_CIPHER_BUFFER_SIZE;

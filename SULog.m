@@ -12,41 +12,13 @@
 // -----------------------------------------------------------------------------
 
 #include "SULog.h"
-
+#include "SUConstants.h"
 
 // -----------------------------------------------------------------------------
 //	Constants:
 // -----------------------------------------------------------------------------
 
 #define LOG_FILE_PATH	@"~/Library/Logs/SparkleUpdateLog.log"
-
-BOOL debugFlag;
-
-// -----------------------------------------------------------------------------
-//	SUIsDebug:
-//		Retrieves, whether debug flag was set or not.
-//
-//	GIVES:
-//		result	-	debug flag, if set.
-// -----------------------------------------------------------------------------
-
-BOOL	SUIsDebug( void )
-{
-    return debugFlag;
-}
-
-// -----------------------------------------------------------------------------
-//	SUSetDebug:
-//		Sets the debug flag inside the logging.
-//
-//	TAKES:
-//		setToDebug	-	debug flag to set.
-// -----------------------------------------------------------------------------
-
-void	SUDSetDebug( BOOL setToDebug )
-{
-    debugFlag = setToDebug;
-}
 
 
 // -----------------------------------------------------------------------------
@@ -90,15 +62,15 @@ void	SULog( NSString* format, ... )
 	va_start(ap, format);
 	NSString*	theStr = [[[NSString alloc] initWithFormat: format arguments: ap] autorelease];
 	FILE*		logfile = fopen([[LOG_FILE_PATH stringByExpandingTildeInPath] fileSystemRepresentation],"a");
-	if( !logfile )
+	if ( !logfile )
+    {
 		NSLog( @"%@",theStr );
+    }
 	else
 	{
-        if(debugFlag)
-        {
-           NSLog(@"Sparkle DEBUG: %@", theStr);
-        }
-
+#ifdef DEBUG
+        NSLog(@"Sparkle DEBUG: %@", theStr);
+#endif
 		theStr = [NSString stringWithFormat: @"%@: %@", [NSDate date], theStr];
 		NSData*		theData = [theStr dataUsingEncoding: NSUTF8StringEncoding];
 		char		newlineChar = '\n';

@@ -414,6 +414,17 @@ static NSString * const SUUpdaterDefaultsObservationContext = @"SUUpdaterDefault
 	[host setBool:automaticallyUpdates forUserDefaultsKey:SUAutomaticallyUpdateKey];
 }
 
+
+- (void)setDebug:(BOOL)debugFlag
+{
+    [host setBool:debugFlag forUserDefaultsKey:SUEnableDebugModeKey];
+}
+
+- (BOOL)isDebug
+{
+	return [host boolForKey:SUEnableDebugModeKey];
+}
+
 - (BOOL)automaticallyDownloadsUpdates
 {
 	// If the SUAllowsAutomaticUpdatesKey exists and is set to NO, return NO.

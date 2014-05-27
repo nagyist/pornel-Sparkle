@@ -37,6 +37,9 @@
 - (void)setAutomaticallyChecksForUpdates:(BOOL)automaticallyChecks;
 - (BOOL)automaticallyChecksForUpdates;
 
+- (void)setDebug:(BOOL)debugFlag;
+- (BOOL)isDebug;
+
 - (void)setUpdateCheckInterval:(NSTimeInterval)interval;
 - (NSTimeInterval)updateCheckInterval;
 
