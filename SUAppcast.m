@@ -221,7 +221,9 @@
 	
 	if (failed)
     {
-        [self reportError:[NSError errorWithDomain:SUSparkleErrorDomain code:SUAppcastParseError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:SULocalizedString(@"An error occurred while parsing the update feed.", nil), NSLocalizedDescriptionKey, nil]]];
+        [self reportError:[NSError errorWithDomain:SUSparkleErrorDomain
+                                              code:SUAppcastParseError
+                                          userInfo:[NSDictionary dictionaryWithObjectsAndKeys:SULocalizedString(@"An error occurred while parsing the update feed.", nil), NSLocalizedDescriptionKey, nil]]];
 	}
     else if ([delegate respondsToSelector:@selector(appcastDidFinishLoading:)])
     {

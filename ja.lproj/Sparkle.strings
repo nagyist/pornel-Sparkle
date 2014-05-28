@@ -92,7 +92,7 @@
 "You already have the newest version of %@." = "既に最新バージョンの %@ を使用しています。";
 
 /* No comment provided by engineer. */
-"You're up-to-date!" = "最新版を使用しています！";
+"You are up-to-date!" = "最新版を使用しています！";
 
 /* Alternative name for "Install" button if we have a paid update or other update
 	without a download but with a URL. */

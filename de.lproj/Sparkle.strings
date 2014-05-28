@@ -92,7 +92,7 @@
 "You already have the newest version of %@." = "Sie haben bereits die neueste Version von %@.";
 
 /* No comment provided by engineer. */
-"You're up-to-date!" = "Sie sind auf dem neuesten Stand!";
+"You are up-to-date!" = "Sie sind auf dem neuesten Stand!";
 
 /* Alternative name for "Install" button if we have a paid update or other update
 	without a download but with a URL. */

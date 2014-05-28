@@ -572,6 +572,18 @@ static NSString * const SUUpdaterDefaultsObservationContext = @"SUUpdaterDefault
 	return driver && ([driver finished] == NO);
 }
 
++ (NSString *)localizedStringForKey:(NSString *)key table:(NSString *)table
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"en" ofType:@"lproj"];
+    NSString *str = [[NSBundle mainBundle] localizedStringForKey:key value:@"NA" table:table];
+    if ([str isEqualToString:@"NA"])
+    {
+        return [[NSBundle bundleWithPath:path] localizedStringForKey:key value:@"NA" table:table];
+    }
+    
+    return str;
+}
+
 - (id)delegate { return delegate; }
 - (NSBundle *)hostBundle { return [host bundle]; }
 

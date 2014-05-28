@@ -52,7 +52,7 @@
 		[[updater delegate] updaterDidNotFindUpdate:updater];
 	[[NSNotificationCenter defaultCenter] postNotificationName:SUUpdaterDidNotFindUpdateNotification object:updater];
 	
-	NSAlert *alert = [NSAlert alertWithMessageText:SULocalizedString(@"You're up-to-date!", nil) defaultButton:SULocalizedString(@"OK", nil) alternateButton:nil otherButton:nil informativeTextWithFormat:SULocalizedString(@"%@ %@ is currently the newest version available.", nil), [host name], [host displayVersion]];
+	NSAlert *alert = [NSAlert alertWithMessageText:SULocalizedString(@"You are up-to-date!", nil) defaultButton:SULocalizedString(@"OK", nil) alternateButton:nil otherButton:nil informativeTextWithFormat:SULocalizedString(@"%@ %@ is currently the newest version available.", nil), [host name], [host displayVersion]];
 	[self showModalAlert:alert];
 	[self abortUpdate];
 }
@@ -73,8 +73,13 @@
 	{
 		case SUInstallUpdateChoice:
 			statusController = [[SUStatusController alloc] initWithHost:host];
-			[statusController beginActionWithTitle:SULocalizedString(@"Downloading update...", @"Take care not to overflow the status window.") maxProgressValue:0.0 statusText:nil];
-			[statusController setButtonTitle:SULocalizedString(@"Cancel", nil) target:self action:@selector(cancelDownload:) isDefault:NO];
+			[statusController beginActionWithTitle:SULocalizedString(@"Downloading update...", @"Take care not to overflow the status window.")
+                                  maxProgressValue:0.0
+                                        statusText:nil];
+			[statusController setButtonTitle:SULocalizedString(@"Cancel", nil)
+                                      target:self
+                                      action:@selector(cancelDownload:)
+                                   isDefault:NO];
 			[statusController showWindow:self];	
 			[self downloadUpdate];
 			break;

@@ -76,6 +76,8 @@
 
 - (BOOL)updateInProgress;
 
++ (NSString *)localizedStringForKey:(NSString *)key table:(NSString *)table;
+
 @end
 
 // -----------------------------------------------------------------------------

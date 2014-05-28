@@ -21,7 +21,15 @@
 #ifdef __OBJC__
 
 #define SPARKLE_BUNDLE [NSBundle bundleWithIdentifier:@"org.andymatuschak.Sparkle"]
+#define DEFAULT_EN_BUNDLE [NSBundle pathForResource:@"en" ofType:@"lproj"]
+
+// @see: https://chromium.googlesource.com/chromium/src/base/+/refs/heads/master/mac/foundation_util.h
+// #if defined(key)
 #define SULocalizedString(key,comment) NSLocalizedStringFromTableInBundle(key, @"Sparkle", SPARKLE_BUNDLE, comment)
+//#else
+//#define SULocalizedString(key,comment) NSLocalizedStringFromTableInBundle(key, @"Sparkle", DEFAULT_EN_BUNDLE, comment)
+//#endif
+
 #define SUAbstractFail() NSAssert2(nil, @"Can't call %@ on an instance of %@; this is an abstract method!", __PRETTY_FUNCTION__, [self class]);
 
 #import <Cocoa/Cocoa.h>
