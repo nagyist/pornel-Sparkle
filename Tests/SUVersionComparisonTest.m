@@ -6,24 +6,21 @@
 //  Copyright 2008 Andy Matuschak. All rights reserved.
 //
 
-#import "SUVersionComparisonTest.h"
 #import "SUStandardVersionComparator.h"
 
-@implementation SUVersionComparisonTest
+#import <XCTest/XCTest.h>
 
-#define SUAssertOrder(a,b,c) STAssertTrue([[SUStandardVersionComparator defaultComparator] compareVersion:a toVersion:b] == c, @"b should be newer than a!")
+@interface SUVersionComparisonTestCase : XCTestCase {
+}
+@end
+
+@implementation SUVersionComparisonTestCase
+
+#define SUAssertOrder(a,b,c) XCTAssertTrue([[SUStandardVersionComparator defaultComparator] compareVersion:a toVersion:b] == c, @"b should be newer than a!")
 #define SUAssertAscending(a, b) SUAssertOrder(a,b,NSOrderedAscending)
 #define SUAssertDescending(a, b) SUAssertOrder(a,b,NSOrderedDescending)
 #define SUAssertEqual(a, b) SUAssertOrder(a,b,NSOrderedSame)
 
-- (void)testBuildVersionsStrings
-{
-	SUAssertAscending(@"1.1.54", @"1.1.56");
-	SUAssertEqual(@"1.1.1", @"1.1.1");
-	SUAssertDescending(@"2.0", @"1.1");
-}
-
-/*
 - (void)testNumbers
 {
 	SUAssertAscending(@"1.0", @"1.1");
@@ -54,7 +51,9 @@
 	SUAssertAscending(@"1.0b5 (1234)", @"1.0b5 (1235)");
 	SUAssertAscending(@"1.0b5 (1234)", @"1.0.1b5 (1234)");
 	SUAssertAscending(@"1.0.1b5 (1234)", @"1.0.1b6 (1234)");
-	
+	SUAssertAscending(@"2.0.0.2429", @"2.0.0.2430");
+	SUAssertAscending(@"1.1.1.1818", @"2.0.0.2430");
+
 	SUAssertAscending(@"3.3 (5847)", @"3.3.1b1 (5902)");
 }
 
@@ -71,6 +70,5 @@
 {
     SUAssertAscending(@"201210251627", @"201211051041");
 }
-*/
 
 @end
